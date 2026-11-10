@@ -34,11 +34,14 @@
     return out;
   }
 
+  /** Borra localStorage/sessionStorage dejando solo el respaldo de los datos reales del usuario. */
   function respaldarYLimpiar() {
-    const snap = { local: volcar(localStorage), session: volcar(sessionStorage) };
+    // Si ya existe un respaldo (p. ej. venimos de "Volver a ejecutar"), se conserva el original.
+    const snap = localStorage.getItem(SNAPSHOT_KEY)
+      || JSON.stringify({ local: volcar(localStorage), session: volcar(sessionStorage) });
     localStorage.clear();
     sessionStorage.clear();
-    localStorage.setItem(SNAPSHOT_KEY, JSON.stringify(snap));
+    localStorage.setItem(SNAPSHOT_KEY, snap);
   }
 
   function restaurar() {
@@ -630,13 +633,44 @@
     } finally {
       if ($('#qaKeep').checked) localStorage.removeItem(SNAPSHOT_KEY);
       else restaurar();
+      yaEjecuto = true;
       btn.disabled = false;
       btn.textContent = '↻ Volver a ejecutar';
     }
   }
 
-  // Si una corrida anterior se interrumpió, devolver los datos reales del usuario.
-  restaurar();
-  btn.addEventListener('click', ejecutar);
-  if (params.get('auto') !== '0') ejecutar();
+  /**
+   * "Volver a ejecutar" sin "Conservar datos": borra el localStorage y recarga la página
+   * completa con la velocidad elegida. Recargar es necesario porque la app también guarda
+   * su memoria en `window.name` del iframe, que sobrevive a recargar solo el iframe.
+   */
+  function reiniciarDesdeCero() {
+    btn.disabled = true;
+    setEstado('running', 'Borrando datos y recargando…');
+    respaldarYLimpiar();
+    const url = new URL(location.href);
+    url.searchParams.set('velocidad', selVel.value);
+    url.searchParams.set('reinicio', '1');
+    url.searchParams.delete('auto');
+    location.replace(url.toString());
+  }
+
+  let yaEjecuto = false;
+  btn.addEventListener('click', () => {
+    if (yaEjecuto && !$('#qaKeep').checked) reiniciarDesdeCero();
+    else ejecutar();
+  });
+
+  if (params.get('reinicio') === '1') {
+    // Venimos de "Volver a ejecutar": el almacenamiento ya está limpio y el respaldo intacto.
+    // Se quita la marca de la URL para que un F5 posterior restaure los datos con normalidad.
+    const url = new URL(location.href);
+    url.searchParams.delete('reinicio');
+    history.replaceState(null, '', url.toString());
+    ejecutar();
+  } else {
+    // Si una corrida anterior se interrumpió, devolver los datos reales del usuario.
+    restaurar();
+    if (params.get('auto') !== '0') ejecutar();
+  }
 })();

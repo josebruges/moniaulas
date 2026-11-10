@@ -8,6 +8,11 @@ Se registran, inician sesión y trabajan en el dashboard. Hay dos agentes:
 | 👨‍🎓 **Estudiante** | Se registra, cierra sesión y vuelve a entrar, reserva una monitoría, publica en el foro, resuelve el Quiz y abre los 3 candados del Escape Room. |
 | 👨‍🏫 **Monitor** | Se registra, inicia sesión, publica un aula, sube un apunte al cuadernillo, publica en el foro y responde a un estudiante con el sello verificado. |
 
+> 📚 **Material para clase (Administración de Empresas):**
+> [Guía paso a paso (.md)](docs/GUIA-PASO-A-PASO.md) ·
+> [Guía en PDF](docs/GUIA-PASO-A-PASO.pdf) ·
+> [Presentación (.pptx)](docs/MoniAulas-Presentacion.pptx)
+
 Hay **dos formas** de ejecutarlos:
 
 1. **Desde el navegador (sin instalar nada):** abres una URL y ves al robot trabajar en vivo.
@@ -35,7 +40,7 @@ Al abrir la URL, la prueba **arranca sola**:
 |---|---|---|
 | Velocidad | Selector *Velocidad* o `?velocidad=lenta`, `normal` o `rapida` | `lenta` para presentaciones, `rapida` para verificar rápido. |
 | No iniciar solo | `?auto=0` | Abre la página y espera a que pulses **▶ Ejecutar**. |
-| Volver a ejecutar | Botón **↻ Volver a ejecutar** | Repite toda la prueba con usuarios nuevos. |
+| Volver a ejecutar | Botón **↻ Volver a ejecutar** | Repite toda la prueba con usuarios nuevos. Si *Conservar datos* está desmarcado, borra el `localStorage` y recarga la página desde cero con la velocidad elegida. |
 | Conservar datos | Casilla *Conservar datos* | Deja guardados en tu navegador los usuarios y contenidos que creó el robot. |
 
 > **¿Ensucia mis datos?** No. Antes de empezar, el robot respalda el `localStorage` y el
