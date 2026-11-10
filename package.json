@@ -1,0 +1,21 @@
+{
+  "name": "moniaulas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "SLOWMO=400 playwright test --headed --workers=1",
+    "test:estudiante": "SLOWMO=400 playwright test --headed --workers=1 -g \"Estudiante\"",
+    "test:monitor": "SLOWMO=400 playwright test --headed --workers=1 -g \"Monitor\"",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "http-server": "^14.1.1"
+  }
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA estudiante — MoniAulas</title>
+  <link rel="stylesheet" href="/qa/runner.css">
+</head>
+<body data-rol="estudiante">
+  <aside>
+    <header>
+      <h1>👨‍🎓 Agente Estudiante · Robot QA</h1>
+      <p>Se registra (y valida contraseña corta), cierra e inicia sesión, reserva una monitoría, publica en el foro, resuelve el Quiz y el Escape Room.</p>
+      <p>Ver también: <a href="/qa/monitor">agente monitor</a> · <a href="/qa/">todas las pruebas</a></p>
+      <div class="controles">
+        <button id="qaRun">▶ Ejecutar</button>
+        <label>Velocidad
+          <select id="qaSpeed">
+            <option value="lenta">Lenta</option>
+            <option value="normal">Normal</option>
+            <option value="rapida">Rápida</option>
+          </select>
+        </label>
+        <label title="Si se marca, los usuarios de prueba quedan guardados en este navegador"><input type="checkbox" id="qaKeep"> Conservar datos</label>
+      </div>
+      <div id="qaStatus" class="estado running">Preparando…</div>
+    </header>
+    <ol id="qaSteps"></ol>
+  </aside>
+  <iframe id="appFrame" title="MoniAulas bajo prueba"></iframe>
+  <script src="/qa/agentes.js"></script>
+</body>
+</html>

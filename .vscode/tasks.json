@@ -1,0 +1,44 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "MoniAulas: pruebas visibles (todas)",
+      "type": "npm",
+      "script": "test:headed",
+      "group": { "kind": "test", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "MoniAulas: Agente Estudiante",
+      "type": "npm",
+      "script": "test:estudiante",
+      "group": "test",
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "MoniAulas: Agente Monitor",
+      "type": "npm",
+      "script": "test:monitor",
+      "group": "test",
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "MoniAulas: Playwright UI (paso a paso)",
+      "type": "npm",
+      "script": "test:ui",
+      "group": "test",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "MoniAulas: abrir reporte HTML",
+      "type": "npm",
+      "script": "report",
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}

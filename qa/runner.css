@@ -1,0 +1,27 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, sans-serif; background: #060a12; color: #e2e8f0; height: 100vh; display: grid; grid-template-columns: 400px 1fr; }
+aside { display: flex; flex-direction: column; border-right: 1px solid #1e293b; min-height: 0; }
+header { padding: 16px; border-bottom: 1px solid #1e293b; }
+header h1 { margin: 0 0 4px; font-size: 16px; }
+header p { margin: 0 0 10px; font-size: 12px; color: #94a3b8; }
+header a { color: #818cf8; }
+.controles { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12px; }
+button#qaRun { background: #4f46e5; color: #fff; border: 0; border-radius: 8px; padding: 8px 12px; font-weight: 700; cursor: pointer; }
+button#qaRun:disabled { opacity: .5; cursor: wait; }
+select { background: #0f172a; color: #e2e8f0; border: 1px solid #334155; border-radius: 6px; padding: 4px; }
+.estado { margin-top: 10px; padding: 8px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; }
+.estado.running { background: #1e1b4b; color: #c7d2fe; }
+.estado.ok { background: #052e16; color: #86efac; }
+.estado.fail { background: #450a0a; color: #fca5a5; }
+ol#qaSteps { list-style: none; margin: 0; padding: 8px 12px 24px; overflow-y: auto; flex: 1; font-size: 12px; }
+.qa-step { display: grid; grid-template-columns: 20px 1fr auto; gap: 6px; padding: 3px 0; align-items: start; }
+.qa-step.nivel-0 { margin-top: 10px; font-weight: 800; font-size: 13px; color: #fff; border-top: 1px solid #1e293b; padding-top: 8px; }
+.qa-step.nivel-1 { padding-left: 14px; color: #cbd5e1; }
+.qa-step.nivel-2 { padding-left: 28px; color: #94a3b8; }
+.qa-step.nivel-3 { padding-left: 42px; color: #64748b; }
+.qa-step .tiempo { color: #64748b; font-variant-numeric: tabular-nums; }
+.qa-step.running .titulo { color: #fbbf24; }
+.qa-step.fail .titulo { color: #f87171; }
+.qa-step .error { grid-column: 2 / 4; color: #fca5a5; background: #450a0a; border-radius: 6px; padding: 6px; font-family: ui-monospace, monospace; font-size: 11px; }
+iframe { width: 100%; height: 100vh; border: 0; background: #0b1120; }
+@media (max-width: 900px) { body { grid-template-columns: 1fr; grid-template-rows: 45vh 55vh; } iframe { height: 55vh; } }

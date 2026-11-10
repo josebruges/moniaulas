@@ -1,0 +1,9 @@
+node_modules
+tests
+test-results
+playwright-report
+playwright.config.js
+package.json
+package-lock.json
+.vscode
+*.md
